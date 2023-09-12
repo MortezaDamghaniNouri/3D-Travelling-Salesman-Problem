@@ -83,8 +83,9 @@ i = 1
 
 
 
-
-
+temp_list = [random_chromosome_generator(number_of_cities)]
+temp_list.append(fitness_calculator(temp_list[0], cities))
+print(temp_list)
 
 
 
