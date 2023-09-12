@@ -48,8 +48,8 @@ def first_generation_generator(input_population_number, input_number_of_cities):
             if random_chromosome not in output_list:
                 output_list.append(random_chromosome)
             else:
-                new_random_chromosome = random_chromosome_generator(input_number_of_cities)
                 while True:
+                    new_random_chromosome = random_chromosome_generator(input_number_of_cities)
                     if new_random_chromosome not in output_list:
                         output_list.append(new_random_chromosome)
                         break
@@ -63,8 +63,8 @@ def first_generation_generator(input_population_number, input_number_of_cities):
             if random_chromosome not in output_list:
                 output_list.append(random_chromosome)
             else:
-                new_random_chromosome = random_chromosome_generator(input_number_of_cities)
                 while True:
+                    new_random_chromosome = random_chromosome_generator(input_number_of_cities)
                     if new_random_chromosome not in output_list:
                         output_list.append(new_random_chromosome)
                         break
@@ -110,10 +110,10 @@ while i < len(lines):
     i += 1
 
 # generating the first generation
-number_of_population = 500
-population = first_generation_generator(number_of_population)
+number_of_population = 6
+population = first_generation_generator(number_of_population, number_of_cities)
 
-
+print(population)
 
 
 # while i <= number_of_population:
