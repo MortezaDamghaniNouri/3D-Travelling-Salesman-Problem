@@ -27,11 +27,14 @@ def euclidean_distance_calculator(city_one, city_two):
 
 
 # This function calculates the fitness of the input chromosomes
-# def fitness_calculator(input_list, input_cities):
-
-
-
-
+def fitness_calculator(input_chromosome, list_of_cities):
+    fitness = 0
+    k = 0
+    while k < (len(input_chromosome) - 1):
+        fitness = fitness + euclidean_distance_calculator(list_of_cities[input_chromosome[k]], list_of_cities[input_chromosome[k + 1]])
+        k += 1
+    fitness = fitness + euclidean_distance_calculator(list_of_cities[input_chromosome[0]], list_of_cities[input_chromosome[len(input_chromosome) - 1]])
+    return fitness
 
 
 
@@ -78,8 +81,6 @@ i = 1
 #
 #     i += 1
 
-print(euclidean_distance_calculator([12, 32, 33], [15, 14, 14]))
-print(euclidean_distance_calculator([200, 1, 50], [1, 5, 10]))
 
 
 
