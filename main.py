@@ -21,8 +21,14 @@ def random_chromosome_generator(size):
     return output_list
 
 
+# This function returns the euclidean distance between the two input cities
+def euclidean_distance_calculator(city_one, city_two):
 
 
+
+
+# This function calculates the fitness of the input chromosomes
+def fitness_calculator(input_list, input_cities):
 
 
 
@@ -59,7 +65,7 @@ while i < len(lines):
     i += 1
 
 # generating the first generation
-number_of_population = 1000
+number_of_population = 500
 population = []
 i = 1
 
