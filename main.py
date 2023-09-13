@@ -141,16 +141,10 @@ while i < len(lines):
     i += 1
 
 # generating the first generation
-number_of_population = 7
+number_of_population = 500
 population = first_generation_generator(number_of_population, number_of_cities, cities)
-
-print(population)
-print("population len: " + str(len(population)))
-
-
 population = sort(population)
-print("new population:")
-print(population)
+
 
 
 
