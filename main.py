@@ -46,16 +46,12 @@ def first_generation_generator(input_population_number, input_number_of_cities, 
         while k < input_population_number:
             random_chromosome = random_chromosome_generator(input_number_of_cities)
             if random_chromosome not in output_list:
-                temp_list = [random_chromosome]
-                temp_list.append(fitness_calculator(temp_list[0], input_list_of_cities))
-                output_list.append(temp_list)
+                output_list.append(random_chromosome)
             else:
                 while True:
                     new_random_chromosome = random_chromosome_generator(input_number_of_cities)
                     if new_random_chromosome not in output_list:
-                        temp_list = [new_random_chromosome]
-                        temp_list.append(fitness_calculator(temp_list[0], input_list_of_cities))
-                        output_list.append(temp_list)
+                        output_list.append(new_random_chromosome)
                         break
 
             k += 1
@@ -65,16 +61,12 @@ def first_generation_generator(input_population_number, input_number_of_cities, 
         while k < number_of_all_possibilities:
             random_chromosome = random_chromosome_generator(input_number_of_cities)
             if random_chromosome not in output_list:
-                temp_list = [random_chromosome]
-                temp_list.append(fitness_calculator(temp_list[0], input_list_of_cities))
-                output_list.append(temp_list)
+                output_list.append(random_chromosome)
             else:
                 while True:
                     new_random_chromosome = random_chromosome_generator(input_number_of_cities)
                     if new_random_chromosome not in output_list:
-                        temp_list = [new_random_chromosome]
-                        temp_list.append(fitness_calculator(temp_list[0], input_list_of_cities))
-                        output_list.append(temp_list)
+                        output_list.append(new_random_chromosome)
                         break
 
             k += 1
@@ -83,12 +75,18 @@ def first_generation_generator(input_population_number, input_number_of_cities, 
         k = 0
         while k < subtraction:
             random_chromosome = random_chromosome_generator(input_number_of_cities)
-            temp_list = [random_chromosome]
-            temp_list.append(fitness_calculator(temp_list[0], input_list_of_cities))
-            output_list.append(temp_list)
+            output_list.append(random_chromosome)
             k += 1
 
-    return output_list
+    k = 0
+    new_output_list = []
+    while k < len(output_list):
+        temp_list = [output_list[k]]
+        temp_list.append(fitness_calculator(temp_list[0], input_list_of_cities))
+        new_output_list.append(temp_list)
+        k += 1
+
+    return new_output_list
 
 
 
@@ -120,11 +118,11 @@ while i < len(lines):
     i += 1
 
 # generating the first generation
-number_of_population = 6
+number_of_population = 7
 population = first_generation_generator(number_of_population, number_of_cities, cities)
 
 print(population)
-
+print("population len: " + str(len(population)))
 
 # while i <= number_of_population:
 #     temp_list = [random_chromosome_generator(number_of_cities)]
@@ -133,20 +131,3 @@ print(population)
 #
 #
 #     i += 1
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
