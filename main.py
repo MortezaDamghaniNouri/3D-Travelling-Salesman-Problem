@@ -27,7 +27,7 @@ def euclidean_distance_calculator(city_one, city_two):
 
 
 # This function calculates the fitness of the input chromosomes
-def fitness_calculator(input_chromosome, list_of_cities):
+def total_distance_calculator(input_chromosome, list_of_cities):
     fitness = 0
     k = 0
     while k < (len(input_chromosome) - 1):
@@ -82,12 +82,28 @@ def first_generation_generator(input_population_number, input_number_of_cities, 
     new_output_list = []
     while k < len(output_list):
         temp_list = [output_list[k]]
-        temp_list.append(fitness_calculator(temp_list[0], input_list_of_cities))
+        temp_list.append(total_distance_calculator(temp_list[0], input_list_of_cities))
         new_output_list.append(temp_list)
         k += 1
 
     return new_output_list
 
+
+# This function sorts the input list
+def sort(input_list):
+    k = len(input_list) - 2
+    while k >= 0:
+        j = 0
+        while j <= k:
+            if input_list[j][1] > input_list[j + 1][1]:
+                temp = input_list[j]
+                input_list[j] = input_list[j + 1]
+                input_list[j + 1] = temp
+            j += 1
+
+        k = k - 1
+
+    return input_list
 
 
 
@@ -103,6 +119,13 @@ while True:
         break
     lines.append(line.rstrip())
 input_file.close()
+
+new_lines = []
+for i in lines:
+    if i != "":
+        new_lines.append(i)
+
+lines = new_lines
 
 # parsing the lines of the input file
 cities = []
@@ -124,10 +147,29 @@ population = first_generation_generator(number_of_population, number_of_cities, 
 print(population)
 print("population len: " + str(len(population)))
 
-# while i <= number_of_population:
-#     temp_list = [random_chromosome_generator(number_of_cities)]
-#     temp_list.append(fitness_calculator(temp_list[0]))
-#
-#
-#
-#     i += 1
+
+population = sort(population)
+print("new population:")
+print(population)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
