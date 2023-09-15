@@ -106,6 +106,22 @@ def sort(input_list):
     return input_list
 
 
+# Crossover operation is implemented in this function
+def crossover(input_parent_one, input_parent_two, input_number_of_cities):
+        while True:
+            random_cut_one = random.randint(1, input_number_of_cities - 1)
+            random_cut_two = random.randint(1, input_number_of_cities - 1)
+            if random_cut_one != random_cut_two:
+                break
+        if random_cut_one > random_cut_two:
+            lower_cut = random_cut_two
+            upper_cut = random_cut_one
+        else:
+            lower_cut = random_cut_one
+            upper_cut = random_cut_two
+
+
+
 
 
 
@@ -144,8 +160,8 @@ while i < len(lines):
 number_of_population = 500
 population = first_generation_generator(number_of_population, number_of_cities, cities)
 population = sort(population)
-
-
+# print(population)
+# print(number_of_cities)
 
 
 
