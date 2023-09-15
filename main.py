@@ -255,6 +255,32 @@ def crossover(input_parent_one, input_parent_two, input_number_of_cities):
     return offspring_one, offspring_two
 
 
+# Mutation is implemented in this function
+def mutation(input_chromosome, input_number_of_cities):
+    random_number = random.randint(1, 10)
+    mutation_probability = 2
+    if random_number <= mutation_probability:
+        while True:
+            first_random_index = random.randint(0, (input_number_of_cities - 1))
+            second_random_index = random.randint(0, (input_number_of_cities - 1))
+            if first_random_index != second_random_index:
+                temp = input_chromosome[first_random_index]
+                input_chromosome[first_random_index] = input_chromosome[second_random_index]
+                input_chromosome[second_random_index] = temp
+                break
+        return input_chromosome
+    else:
+        return input_chromosome
+
+
+
+
+
+
+
+
+
+
 
 
 
