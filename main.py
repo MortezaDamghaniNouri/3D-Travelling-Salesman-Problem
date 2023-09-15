@@ -268,8 +268,10 @@ def mutation(input_chromosome, input_number_of_cities):
                 input_chromosome[first_random_index] = input_chromosome[second_random_index]
                 input_chromosome[second_random_index] = temp
                 break
+
         return input_chromosome
     else:
+
         return input_chromosome
 
 
@@ -325,7 +327,7 @@ population = sort(population)
 
 if number_of_cities > 2:
     print(crossover([3, 7, 5, 2, 4, 1, 6], [4, 2, 3, 5, 1, 7, 6], number_of_cities))
-
+    print("the result of mutation: " + str(mutation([1, 2, 3, 4, 5, 6, 7], number_of_cities)))
 
 
 
