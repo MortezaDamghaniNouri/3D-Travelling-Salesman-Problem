@@ -248,10 +248,6 @@ def crossover(input_parent_one, input_parent_two, input_number_of_cities):
         k += 1
 
 
-
-
-    print("upper cut: " + str(upper_cut))
-    print("lower cut: " + str(lower_cut))
     return offspring_one, offspring_two
 
 
@@ -326,8 +322,8 @@ population = sort(population)
 # print(number_of_cities)
 
 if number_of_cities > 2:
-    print(crossover([3, 7, 5, 2, 4, 1, 6], [4, 2, 3, 5, 1, 7, 6], number_of_cities))
-    print("the result of mutation: " + str(mutation([1, 2, 3, 4, 5, 6, 7], number_of_cities)))
+    print(crossover([1, 9, 7, 2, 3, 4, 5, 6, 10, 8], [8, 10, 1, 3, 4, 5, 6, 7, 2, 9], 10))
+
 
 
 
