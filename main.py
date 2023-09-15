@@ -156,6 +156,7 @@ def crossover(input_parent_one, input_parent_two, input_number_of_cities):
         map_list.append([input_parent_one[k], input_parent_two[k]])
         k += 1
 
+    # generating the remaining of offspring one
     k = 0
     while k < lower_cut:
 
@@ -170,25 +171,88 @@ def crossover(input_parent_one, input_parent_two, input_number_of_cities):
 
             element = input_parent_one[k]
             while True:
+                index, element = does_exist(element, temp_list)
+                if element not in offspring_list_one:
+                    offspring_one[k] = element
+                    break
+                else:
+                    temp_list.pop(index)
+        k += 1
+
+    k = upper_cut
+    while k < input_number_of_cities:
+
+        if input_parent_one[k] not in offspring_list_one:
+            offspring_one[k] = input_parent_one[k]
+        else:
+            temp_list = []
+            j = 0
+            while j < len(map_list):
+                temp_list.append(map_list[j])
+                j += 1
+
+            element = input_parent_one[k]
+            while True:
+                index, element = does_exist(element, temp_list)
+                if element not in offspring_list_one:
+                    offspring_one[k] = element
+                    break
+                else:
+                    temp_list.pop(index)
+        k += 1
 
 
+    # generating the remaining of offspring two
+    k = 0
+    while k < lower_cut:
 
+        if input_parent_two[k] not in offspring_list_two:
+            offspring_two[k] = input_parent_two[k]
+        else:
+            temp_list = []
+            j = 0
+            while j < len(map_list):
+                temp_list.append(map_list[j])
+                j += 1
 
+            element = input_parent_two[k]
+            while True:
+                index, element = does_exist(element, temp_list)
+                if element not in offspring_list_two:
+                    offspring_two[k] = element
+                    break
+                else:
+                    temp_list.pop(index)
+        k += 1
 
+    k = upper_cut
+    while k < input_number_of_cities:
 
+        if input_parent_two[k] not in offspring_list_two:
+            offspring_two[k] = input_parent_two[k]
+        else:
+            temp_list = []
+            j = 0
+            while j < len(map_list):
+                temp_list.append(map_list[j])
+                j += 1
 
-
-
+            element = input_parent_two[k]
+            while True:
+                index, element = does_exist(element, temp_list)
+                if element not in offspring_list_two:
+                    offspring_two[k] = element
+                    break
+                else:
+                    temp_list.pop(index)
         k += 1
 
 
 
 
-
-
-
-
-
+    print("upper cut: " + str(upper_cut))
+    print("lower cut: " + str(lower_cut))
+    return offspring_one, offspring_two
 
 
 
@@ -234,7 +298,7 @@ population = sort(population)
 # print(number_of_cities)
 
 if number_of_cities > 2:
-    crossover()
+    print(crossover([3, 7, 5, 2, 4, 1, 6], [4, 2, 3, 5, 1, 7, 6], number_of_cities))
 
 
 
