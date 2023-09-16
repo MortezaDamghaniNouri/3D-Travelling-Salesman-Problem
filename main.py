@@ -343,9 +343,6 @@ if number_of_cities > 2:
         population.append(h)
     population = sort(population)
 
-
-
-
     counter = 1
     while counter <= number_of_generations:
         i = 0
@@ -369,6 +366,7 @@ if number_of_cities > 2:
             temp_list.append(population[m])
             m += 1
         population = temp_list
+        print("the len of population (should be 2000): " + str(len(population)))
         counter += 1
 
     print("sorting the newly_generated_chromosomes...")
