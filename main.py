@@ -351,22 +351,30 @@ if number_of_cities > 2:
         i = 0
         while i < (len(population) - 1):
             temp_new_chromosomes = []
+            first_child, second_child = crossover(population[i][0], population[i + 1][0], number_of_cities)
+            first_child = mutation(first_child, number_of_cities)
+            second_child = mutation(second_child, number_of_cities)
+            temp_new_chromosomes.append([first_child, total_distance_calculator(first_child, cities)])
+            temp_new_chromosomes.append([second_child, total_distance_calculator(second_child, cities)])
+            i = i + 2
 
+        for h in temp_new_chromosomes:
+            population.append(h)
+            newly_generated_chromosomes.append(h)
 
-
-
-
-
-
-
-
-
+        population = sort(population)
+        m = 0
+        temp_list = []
+        while m < 2 * number_of_population:
+            temp_list.append(population[m])
+            m += 1
+        population = temp_list
         counter += 1
 
-
-
-
-
+    print("sorting the newly_generated_chromosomes...")
+    newly_generated_chromosomes = sort(newly_generated_chromosomes)
+    print("The best in population: " + str(population[0]))
+    print("The best in newly_generated_chromosomes: " + str(newly_generated_chromosomes[0]))
 
 
 
