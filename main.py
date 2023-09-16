@@ -271,6 +271,10 @@ def mutation(input_chromosome, input_number_of_cities):
         return input_chromosome
 
 
+# This function gets the best generated chromosome and generates the output file
+def output_file_generator(input_chromosome):
+    pass
+
 
 
 
@@ -315,14 +319,49 @@ while i < len(lines):
     i += 1
 
 # generating the first generation
-number_of_population = 500
+number_of_population = 1000
 population = first_generation_generator(number_of_population, number_of_cities, cities)
 population = sort(population)
-# print(population)
-# print(number_of_cities)
+print(population)
+
+
+if number_of_cities <= 2:
+    output_file_generator(population[0])
 
 if number_of_cities > 2:
-    print(crossover([1, 9, 7, 2, 3, 4, 5, 6, 10, 8], [8, 10, 1, 3, 4, 5, 6, 7, 2, 9], 10))
+    number_of_generations = 29
+    newly_generated_chromosomes = []
+    i = 0
+    while i < (len(population) - 1):
+        first_child, second_child = crossover(population[i][0], population[i + 1][0], number_of_cities)
+        first_child = mutation(first_child, number_of_cities)
+        second_child = mutation(second_child, number_of_cities)
+        newly_generated_chromosomes.append([first_child, total_distance_calculator(first_child, cities)])
+        newly_generated_chromosomes.append([second_child, total_distance_calculator(second_child, cities)])
+        i = i + 2
+    for h in newly_generated_chromosomes:
+        population.append(h)
+    population = sort(population)
+
+
+
+
+    counter = 1
+    while counter <= number_of_generations:
+        i = 0
+        while i < (len(population) - 1):
+            temp_new_chromosomes = []
+
+
+
+
+
+
+
+
+
+
+        counter += 1
 
 
 
