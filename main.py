@@ -272,10 +272,24 @@ def mutation(input_chromosome, input_number_of_cities):
 
 
 # This function gets the best generated chromosome and generates the output file
-def output_file_generator(input_chromosome):
-    pass
+def output_file_generator(input_chromosome, input_cities):
+    output_file = open("output.txt", "wt")
+    output_file.write(str(round(input_chromosome[1], 3)) + "\n")
+    input_chromosome[0].append(input_chromosome[0][0])
+    i = 0
+    while i < len(input_chromosome[0]):
+        city_coordinate = input_cities[input_chromosome[0][i]]
+        j = 0
+        while j < len(city_coordinate):
+            if j != (len(city_coordinate) - 1):
+                output_file.write(str(city_coordinate[j]) + " ")
+            else:
+                output_file.write(str(city_coordinate[j]) + "\n")
+            j += 1
 
+        i += 1
 
+    output_file.close()
 
 
 
@@ -357,9 +371,9 @@ if number_of_cities > 2:
 
         for h in temp_new_chromosomes:
             population.append(h)
-            newly_generated_chromosomes.append(h)
 
         population = sort(population)
+        print("children are added to the population and now the length of population is: " + str(len(population)))
         m = 0
         temp_list = []
         while m < 2 * number_of_population:
@@ -369,11 +383,9 @@ if number_of_cities > 2:
         print("the len of population (should be 2000): " + str(len(population)))
         counter += 1
 
-    print("sorting the newly_generated_chromosomes...")
-    print("the len of newly generated chromosome: " + str(len(newly_generated_chromosomes)))
-    # newly_generated_chromosomes = sort(newly_generated_chromosomes)
+
+    print("the len of newly generated chromosome: (should be 1000)" + str(len(newly_generated_chromosomes)))
     print("The best in population: " + str(population[0]))
-    print("The best in newly_generated_chromosomes: " + str(newly_generated_chromosomes[0]))
 
 
 

@@ -1,7 +1,5 @@
-import random
+from itertools import permutations
 import math
-
-
 
 
 def list_of_numbers_generator(input_number):
@@ -41,14 +39,12 @@ def sort(input_list):
                 input_list[j + 1] = temp
             j += 1
 
+
+        if k % 1000 == 0:
+            print(k)
         k = k - 1
 
     return input_list
-
-
-
-
-
 
 
 
@@ -85,50 +81,41 @@ while i < len(lines):
     i += 1
 
 
-results = []
-i = 1
-while i <= math.factorial(number_of_cities):
-    while True:
-        list_of_numbers = list_of_numbers_generator(number_of_cities)
-        result = []
-        while len(list_of_numbers) != 0:
-            random_number = random.randint(0, (len(list_of_numbers) - 1))
-            result.append(list_of_numbers[random_number])
-            list_of_numbers.pop(random_number)
-        if result not in results:
-            results.append(result)
-            break
 
-    if i % 100 == 0:
-        print(i)
-    i += 1
 
-print("The results list is generated")
-print("The len of results: " + str(len(results)))
-print(results)
+all_possible_chromosomes = list(permutations(list_of_numbers_generator(number_of_cities), number_of_cities))
+print("The number of cities: " + str(number_of_cities))
+print("The number of all permutations: " + str(len(all_possible_chromosomes)))
 
-all_possible_chromosomes = []
-i = 0
-while i < len(results):
-    all_possible_chromosomes.append([results[i], total_distance_calculator(results[i], cities)])
-    i += 1
-
-print("Sorting all_possible_chromosomes...")
-all_possible_chromosomes = sort(all_possible_chromosomes)
-
-output_file = open("bf_output.txt", "wt")
-
+total_population = []
 i = 0
 while i < len(all_possible_chromosomes):
-    all_possible_chromosomes[i][0].append(all_possible_chromosomes[i][0][0])
-    output_file.write(str(round(all_possible_chromosomes[i][1], 5)) + ": " + str(all_possible_chromosomes[i][0]) + "\n")
+    total_population.append([list(all_possible_chromosomes[i]), total_distance_calculator(list(all_possible_chromosomes[i]), cities)])
+    i += 1
+
+print("Sorting the population...")
+total_population = sort(total_population)
+
+output_file = open("itertools_output.txt", "wt")
+
+i = 0
+while i < len(total_population):
+    total_population[i][0].append(total_population[i][0][0])
+    output_file.write(str(round(total_population[i][1], 3)) + ": " + str(total_population[i][0]) + "\n")
     i += 1
 
 
 
 output_file.close()
 
-print("bf_output.txt generated.")
+print("itertools_output.txt generated.")
+
+
+
+
+
+
+
 
 
 
