@@ -346,8 +346,8 @@ if number_of_cities > 2:
     counter = 1
     while counter <= number_of_generations:
         i = 0
+        temp_new_chromosomes = []
         while i < (len(population) - 1):
-            temp_new_chromosomes = []
             first_child, second_child = crossover(population[i][0], population[i + 1][0], number_of_cities)
             first_child = mutation(first_child, number_of_cities)
             second_child = mutation(second_child, number_of_cities)
@@ -370,7 +370,8 @@ if number_of_cities > 2:
         counter += 1
 
     print("sorting the newly_generated_chromosomes...")
-    newly_generated_chromosomes = sort(newly_generated_chromosomes)
+    print("the len of newly generated chromosome: " + str(len(newly_generated_chromosomes)))
+    # newly_generated_chromosomes = sort(newly_generated_chromosomes)
     print("The best in population: " + str(population[0]))
     print("The best in newly_generated_chromosomes: " + str(newly_generated_chromosomes[0]))
 
