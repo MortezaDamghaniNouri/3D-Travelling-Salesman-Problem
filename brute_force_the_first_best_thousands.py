@@ -62,7 +62,7 @@ def thousands_best_chromosomes_finder(input_chromosomes_list, number_of_bests):
             i += 1
         output_list.append(input_chromosomes_list[index])
         input_chromosomes_list.pop(index)
-        if counter % 100 == 0:
+        if counter % 10 == 0:
             print(counter)
         counter += 1
 
@@ -114,7 +114,7 @@ while i < len(all_possible_chromosomes):
     i += 1
 
 print("finding the best thousands of chromosomes...")
-number_of_the_best_desired_chromosomes = 2000
+number_of_the_best_desired_chromosomes = 100
 the_first_thousands_chromosomes = thousands_best_chromosomes_finder(total_population, number_of_the_best_desired_chromosomes)
 print("The length of the_first_thousands_chromosomes: " + str(len(the_first_thousands_chromosomes)))
 output_file = open("the_thousands_best_output.txt", "wt")
