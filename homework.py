@@ -327,11 +327,11 @@ while i < len(lines):
 number_of_population = 1000
 population = first_generation_generator(number_of_population, number_of_cities, cities)
 population = sort(population)
-print(population)
+# print(population)
 
 
 if number_of_cities <= 2:
-    output_file_generator(population[0])
+    output_file_generator(population[0], cities)
 
 if number_of_cities > 2:
     number_of_generations = 29
@@ -364,19 +364,16 @@ if number_of_cities > 2:
             population.append(h)
 
         population = sort(population)
-        print("children are added to the population and now the length of population is: " + str(len(population)))
         m = 0
         temp_list = []
         while m < 2 * number_of_population:
             temp_list.append(population[m])
             m += 1
         population = temp_list
-        print("the len of population (should be 2000): " + str(len(population)))
         counter += 1
 
-
-    print("the len of newly generated chromosome: (should be 1000)" + str(len(newly_generated_chromosomes)))
-    print("The best in population: " + str(population[0]))
+    # print("The best chromosome in population: " + str(population[0]))
+    output_file_generator(population[0], cities)
 
 
 
