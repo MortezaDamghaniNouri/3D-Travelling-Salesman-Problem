@@ -293,15 +293,6 @@ def output_file_generator(input_chromosome, input_cities):
 
 
 
-
-
-
-
-
-
-
-
-
 # reading from the input file
 input_file = open("input.txt", "rt")
 lines = []
