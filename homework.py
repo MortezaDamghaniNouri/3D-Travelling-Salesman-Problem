@@ -28,13 +28,16 @@ def euclidean_distance_calculator(city_one, city_two):
 
 # This function calculates the fitness of the input chromosomes
 def total_distance_calculator(input_chromosome, list_of_cities):
-    fitness = 0
-    k = 0
-    while k < (len(input_chromosome) - 1):
-        fitness = fitness + euclidean_distance_calculator(list_of_cities[input_chromosome[k]], list_of_cities[input_chromosome[k + 1]])
-        k += 1
-    fitness = fitness + euclidean_distance_calculator(list_of_cities[input_chromosome[0]], list_of_cities[input_chromosome[len(input_chromosome) - 1]])
-    return fitness
+    if len(list_of_cities) == 0:
+        return 0
+    else:
+        fitness = 0
+        k = 0
+        while k < (len(input_chromosome) - 1):
+            fitness = fitness + euclidean_distance_calculator(list_of_cities[input_chromosome[k]], list_of_cities[input_chromosome[k + 1]])
+            k += 1
+        fitness = fitness + euclidean_distance_calculator(list_of_cities[input_chromosome[0]], list_of_cities[input_chromosome[len(input_chromosome) - 1]])
+        return fitness
 
 
 # This function generates the first generation of chromosomes
@@ -115,10 +118,6 @@ def does_exist(input_element, input_list):
         if input_element == input_list[n][1]:
             return n, input_list[n][0]
         n += 1
-
-
-
-
 
 
 # Crossover operation is implemented in this function
@@ -331,7 +330,13 @@ population = sort(population)
 
 
 if number_of_cities <= 2:
-    output_file_generator(population[0], cities)
+    if number_of_cities == 0:
+        output_file = open("output.txt", "wt")
+        output_file.write("0\n")
+        output_file.close()
+    else:
+        output_file_generator(population[0], cities)
+
 
 if number_of_cities > 2:
     number_of_generations = 29
