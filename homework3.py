@@ -324,8 +324,8 @@ while i < len(lines):
     i += 1
 
 # generating the first generation
-if number_of_cities <= 50:
-    number_of_population = 800
+if number_of_cities <= 199:
+    number_of_population = 1000
     if number_of_cities <= 10:
         number_of_all_possibilities = math.factorial(number_of_cities)
         if number_of_all_possibilities < number_of_population:
