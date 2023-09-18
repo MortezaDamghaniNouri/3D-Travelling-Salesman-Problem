@@ -324,7 +324,11 @@ while i < len(lines):
     i += 1
 
 # generating the first generation
-number_of_population = 1000
+if number_of_cities <= 50:
+    number_of_population = 800
+else:
+    number_of_population = 900
+
 population = first_generation_generator(number_of_population, number_of_cities, cities)
 population = sort(population)
 # print(population)
