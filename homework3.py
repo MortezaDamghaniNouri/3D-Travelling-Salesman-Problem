@@ -349,6 +349,9 @@ if number_of_cities <= 2:
 if number_of_cities > 2:
     population = first_generation_generator(number_of_population, number_of_cities, cities)
     population = sort(population)
+
+    print("population len (should be 800 or 24): " + str(len(population)))
+
     # print(population)
     number_of_generations = 29
     i = 0
@@ -360,6 +363,7 @@ if number_of_cities > 2:
         population.append([second_child, total_distance_calculator(second_child, cities)])
         i = i + 2
 
+    print("population len (should be 1600 or 48): " + str(len(population)))
     population = sort(population)
 
     counter = 1
@@ -373,6 +377,8 @@ if number_of_cities > 2:
             population.append([second_child, total_distance_calculator(second_child, cities)])
             i = i + 2
 
+        print("population len (should be 3200 or 96): " + str(len(population)))
+
         population = sort(population)
         m = 0
         temp_list = []
@@ -380,6 +386,9 @@ if number_of_cities > 2:
             temp_list.append(population[m])
             m += 1
         population = temp_list
+
+        print("population len (should be 1600 or 48): " + str(len(population)))
+
         counter += 1
 
     # print("The best chromosome in population: " + str(population[0]))
