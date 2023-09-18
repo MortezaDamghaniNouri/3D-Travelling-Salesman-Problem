@@ -45,43 +45,20 @@ def total_distance_calculator(input_chromosome, list_of_cities):
 # This function generates the first generation of chromosomes
 def first_generation_generator(input_population_number, input_number_of_cities, input_list_of_cities):
     output_list = []
-    number_of_all_possibilities = math.factorial(input_number_of_cities)
-    if number_of_all_possibilities >= input_population_number:
-        k = 0
-        while k < input_population_number:
-            random_chromosome = random_chromosome_generator(input_number_of_cities)
-            if random_chromosome not in output_list:
-                output_list.append(random_chromosome)
-            else:
-                while True:
-                    new_random_chromosome = random_chromosome_generator(input_number_of_cities)
-                    if new_random_chromosome not in output_list:
-                        output_list.append(new_random_chromosome)
-                        break
-
-            k += 1
-
-    else:
-        k = 0
-        while k < number_of_all_possibilities:
-            random_chromosome = random_chromosome_generator(input_number_of_cities)
-            if random_chromosome not in output_list:
-                output_list.append(random_chromosome)
-            else:
-                while True:
-                    new_random_chromosome = random_chromosome_generator(input_number_of_cities)
-                    if new_random_chromosome not in output_list:
-                        output_list.append(new_random_chromosome)
-                        break
-
-            k += 1
-
-        subtraction = input_population_number - number_of_all_possibilities
-        k = 0
-        while k < subtraction:
-            random_chromosome = random_chromosome_generator(input_number_of_cities)
+    k = 0
+    while k < input_population_number:
+        random_chromosome = random_chromosome_generator(input_number_of_cities)
+        if random_chromosome not in output_list:
             output_list.append(random_chromosome)
-            k += 1
+        else:
+            while True:
+                new_random_chromosome = random_chromosome_generator(input_number_of_cities)
+                if new_random_chromosome not in output_list:
+                    output_list.append(new_random_chromosome)
+                    break
+
+        k += 1
+
 
     k = 0
     new_output_list = []
