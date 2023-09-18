@@ -1,5 +1,7 @@
 import random
 import math
+
+
 # This function generates some random chromosomes. The size of the chromosome is given as an input
 def random_chromosome_generator(size):
     output_list = []
@@ -291,7 +293,6 @@ def output_file_generator(input_chromosome, input_cities):
     output_file.close()
 
 
-
 # reading from the input file
 input_file = open("input.txt", "rt")
 lines = []
@@ -323,7 +324,7 @@ while i < len(lines):
     i += 1
 
 # generating the first generation
-number_of_population = 1000
+number_of_population = 900
 population = first_generation_generator(number_of_population, number_of_cities, cities)
 population = sort(population)
 # print(population)

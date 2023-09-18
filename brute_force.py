@@ -142,19 +142,3 @@ print("bf_output.txt generated.")
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
