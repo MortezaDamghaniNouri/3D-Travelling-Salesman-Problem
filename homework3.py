@@ -326,13 +326,13 @@ while i < len(lines):
 # generating the first generation
 if number_of_cities <= 50:
     number_of_population = 800
+    if number_of_cities <= 10:
+        number_of_all_possibilities = math.factorial(number_of_cities)
+        if number_of_all_possibilities < number_of_population:
+            number_of_population = number_of_all_possibilities
+
 else:
     number_of_population = 900
-
-population = first_generation_generator(number_of_population, number_of_cities, cities)
-population = sort(population)
-# print(population)
-
 
 if number_of_cities <= 2:
     if number_of_cities == 0:
@@ -340,10 +340,16 @@ if number_of_cities <= 2:
         output_file.write("0\n")
         output_file.close()
     else:
+        population = first_generation_generator(number_of_population, number_of_cities, cities)
+        population = sort(population)
+        # print(population)
         output_file_generator(population[0], cities)
 
 
 if number_of_cities > 2:
+    population = first_generation_generator(number_of_population, number_of_cities, cities)
+    population = sort(population)
+    # print(population)
     number_of_generations = 29
     i = 0
     while i < (number_of_population - 1):
