@@ -324,7 +324,7 @@ while i < len(lines):
     i += 1
 
 # generating the first generation
-number_of_population = 900
+number_of_population = 1000
 population = first_generation_generator(number_of_population, number_of_cities, cities)
 population = sort(population)
 # print(population)
@@ -341,33 +341,27 @@ if number_of_cities <= 2:
 
 if number_of_cities > 2:
     number_of_generations = 29
-    newly_generated_chromosomes = []
     i = 0
-    while i < (len(population) - 1):
+    while i < (number_of_population - 1):
         first_child, second_child = crossover(population[i][0], population[i + 1][0], number_of_cities)
         first_child = mutation(first_child, number_of_cities)
         second_child = mutation(second_child, number_of_cities)
-        newly_generated_chromosomes.append([first_child, total_distance_calculator(first_child, cities)])
-        newly_generated_chromosomes.append([second_child, total_distance_calculator(second_child, cities)])
+        population.append([first_child, total_distance_calculator(first_child, cities)])
+        population.append([second_child, total_distance_calculator(second_child, cities)])
         i = i + 2
-    for h in newly_generated_chromosomes:
-        population.append(h)
+
     population = sort(population)
 
     counter = 1
     while counter <= number_of_generations:
         i = 0
-        temp_new_chromosomes = []
-        while i < (len(population) - 1):
+        while i < ((2 * number_of_population) - 1):
             first_child, second_child = crossover(population[i][0], population[i + 1][0], number_of_cities)
             first_child = mutation(first_child, number_of_cities)
             second_child = mutation(second_child, number_of_cities)
-            temp_new_chromosomes.append([first_child, total_distance_calculator(first_child, cities)])
-            temp_new_chromosomes.append([second_child, total_distance_calculator(second_child, cities)])
+            population.append([first_child, total_distance_calculator(first_child, cities)])
+            population.append([second_child, total_distance_calculator(second_child, cities)])
             i = i + 2
-
-        for h in temp_new_chromosomes:
-            population.append(h)
 
         population = sort(population)
         m = 0
