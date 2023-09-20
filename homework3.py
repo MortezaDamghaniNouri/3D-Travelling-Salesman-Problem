@@ -1,3 +1,8 @@
+"""
+In this program, Genetic Algorithm is used for solving Traveling Salesman Problem. Cities have three dimensions (x, y, z).
+"""
+
+
 import random
 import math
 

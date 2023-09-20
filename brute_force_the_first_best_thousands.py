@@ -1,3 +1,8 @@
+"""
+This programs generates the first 1000 shortest paths for solving Traveling Salesman Problem.
+"""
+
+
 from itertools import permutations
 import math
 

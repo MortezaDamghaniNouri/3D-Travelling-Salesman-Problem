@@ -1,3 +1,9 @@
+"""
+In this program, Brute Force is implemented using itertools library in Python.
+By generating all of the possible permutations, the shortest path for solving Traveling Salesman Problem is found for testing the result of homework3.py.
+"""
+
+
 from itertools import permutations
 import math
 
