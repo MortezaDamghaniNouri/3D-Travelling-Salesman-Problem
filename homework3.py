@@ -1,8 +1,3 @@
-"""
-In this program, Genetic Algorithm is used for solving Traveling Salesman Problem. Cities have three dimensions (x, y, z).
-"""
-
-
 import random
 import math
 
@@ -332,21 +327,11 @@ if number_of_cities > 2:
     population = first_generation_generator(number_of_population, number_of_cities, cities)
     population = sort(population)
     # print(population)
-    number_of_generations = 29
-    i = 0
-    while i < (number_of_population - 1):
-        first_child, second_child = crossover(population[i][0], population[i + 1][0], number_of_cities)
-        first_child = mutation(first_child, number_of_cities)
-        second_child = mutation(second_child, number_of_cities)
-        population.append([first_child, total_distance_calculator(first_child, cities)])
-        population.append([second_child, total_distance_calculator(second_child, cities)])
-        i = i + 2
-
-    population = sort(population)
+    number_of_generations = 100
     counter = 1
     while counter <= number_of_generations:
         i = 0
-        while i < ((2 * number_of_population) - 1):
+        while i < (number_of_population - 1):
             first_child, second_child = crossover(population[i][0], population[i + 1][0], number_of_cities)
             first_child = mutation(first_child, number_of_cities)
             second_child = mutation(second_child, number_of_cities)
@@ -356,7 +341,7 @@ if number_of_cities > 2:
         population = sort(population)
         m = 0
         temp_list = []
-        while m < 2 * number_of_population:
+        while m < number_of_population:
             temp_list.append(population[m])
             m += 1
         population = temp_list
