@@ -1,7 +1,7 @@
 """
 In this program, Brute Force method is used for generating all of the possible permutations.
 Generating random numbers in a list is used for implementing Brute Force.
-By generating all of the possible permutations, the shortest path for solving Traveling Salesman Problem is found for testing the result of homework3.py.
+By generating all of the possible permutations, the shortest path for solving Traveling Salesman Problem is found for testing the result of main.py.
 """
 
 

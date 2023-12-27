@@ -1,1 +1,0 @@
-All of the Python scripts in this folder are tested thorouly and work properly and correctly.
